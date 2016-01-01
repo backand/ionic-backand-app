@@ -1,0 +1,40 @@
+<ion-view view-title="Login"> 
+
+    <ion-nav-buttons side="left">
+        <button class="button button-icon ion-navicon"></button>
+        </ion-nav-buttons>
+    <ion-nav-buttons side="right">
+        <button class="button button-icon ion-search"></button>
+    </ion-nav-buttons>
+
+    <ion-content class="padding ">
+            <form ng-submit="login.signin()">
+                <div class="list">
+
+                    <label class="item item-input">
+                        <input id="email" name="email" type="email" placeholder="Your email" ng-model="login.email">
+                    </label>
+                    <label class="item item-input">
+                        <input id="password" name="password" type="password" placeholder="Your password" ng-model="login.password">
+                    </label>
+                </div>
+                <div class="">
+                    <button class="button button-block button-stable" type="submit">
+                        Login
+                    </button>
+                </div>
+                </form>
+                    <button class="button button-full button-positive icon-left ion-social-facebook" ng-click="login.socialSignin('facebook')" type="button">
+                        Facebook
+                    </button>
+                    <button class="button button-full button-dark icon-left ion-social-facebook ion-social-github" ng-click="login.socialSignin('github')" type="button">
+                        Github
+                    </button>
+                    <button class="button button-full button-assertive icon-left ion-social-googleplus" ng-click="login.socialSignin('google')" type="button">
+                        Google+
+                    </button>
+                    <button class="button button-icon ion-ios-person" ng-controller='LoginCtrl' ng-click="openModal()"></button>
+                    <button class="button button-positive" ng-click="login.signout()">log out</button>
+                <h4 style="color:red;" ng-bind="login.error"></h4>
+    </ion-content>
+</ion-view>

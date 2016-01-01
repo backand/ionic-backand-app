@@ -1,0 +1,29 @@
+<ion-view view-title="Objects">
+
+    <ion-nav-buttons side="left">
+        <button class="button button-icon ion-navicon"></button>
+        </ion-nav-buttons>
+    <ion-nav-buttons side="right">
+        <button class="button button-icon ion-search"></button>
+        <button class="button button-icon ion-ios-email"></button>
+        <button class="button button-icon ion-ios-person"></button>
+    </ion-nav-buttons>
+
+        <ion-content>
+                <ion-list>
+                    <ion-item class="item-remove-animate item-avatar item-icon-right" type="item-text-wrap" ng-repeat="object in vm.data" href="#/tab/objects/{{object.id}}">
+                        <h2>{{object.name}}</h2>
+                        <p>{{object.description}}</p>
+                        <i class="icon ion-chevron-right icon-accessory"></i>
+                        <ion-option-button class="button-positive" ng-click="vm.setEdited(object)">
+                            Edit
+                        </ion-option-button>
+                        <ion-option-button class="button-assertive" ng-click="vm.delete(object.id)">
+                            Delete
+                        </ion-option-button>
+                    </ion-item>
+                    <button class="button button-icon ion-ios-person" ng-controller='LoginCtrl' ng-click="openModal()"></button>
+                </div>
+        </ion-content>
+
+</ion-view>

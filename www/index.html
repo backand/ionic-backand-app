@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title></title>
+
+    <link href="lib/ionic/css/ionic.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
+    <link href="css/ionic.app.css" rel="stylesheet">
+    -->
+
+    <!-- ionic/angularjs js -->
+    <script src="lib/ionic/js/ionic.bundle.min.js"></script>
+
+    <!-- cordova script (this will be a 404 during development) -->
+    <script src="cordova.js"></script>
+
+    <script src="lib/angularbknd-sdk/dist/backand.debug.js"></script>
+
+    <!-- your app's js -->
+    <script src="js/app.js"></script>
+    <script src="js/controllers.js"></script>
+    <script src="js/services.js"></script>
+
+</head>
+<body ng-app="SimpleRESTIonic">
+<!--
+  The nav bar that will be updated as we navigate between views.
+-->
+<ion-nav-bar class="bar-positive">
+</ion-nav-bar>
+<!--
+  The views will be rendered in the <ion-nav-view> directive below
+  Templates are in the /templates folder (but you could also
+  have templates inline in this html file if you'd like).
+-->
+<ion-nav-view></ion-nav-view>
+
+<script id="contact-modal.html" type="text/ng-template">
+  <div class="modal" >
+    <ion-header-bar>
+      <h1 class="title">Login</h1>
+    </ion-header-bar>
+    <ion-content class="padding ">
+            <form ng-submit="login.signin()">
+                <div class="list">
+
+                    <label class="item item-input">
+                        <input id="email" name="email" type="email" placeholder="Your email" ng-model="login.email">
+                    </label>
+                    <label class="item item-input">
+                        <input id="password" name="password" type="password" placeholder="Your password" ng-model="login.password">
+                    </label>
+                </div>
+                <div class="">
+                    <button class="button button-block button-stable" type="submit">
+                        Login
+                    </button>
+                </div>
+                </form>
+                    <button class="button button-full button-positive icon-left ion-social-facebook" ng-click="login.socialSignin('facebook')" type="button">
+                        Facebook
+                    </button>
+                    <button class="button button-full button-dark icon-left ion-social-facebook ion-social-github" ng-click="login.socialSignin('github')" type="button">
+                        Github
+                    </button>
+                    <button class="button button-full button-assertive icon-left ion-social-googleplus" ng-click="login.socialSignin('google')" type="button">
+                        Google+
+                    </button>
+                <h4 style="color:red;" ng-bind="login.error"></h4>
+    </ion-content>
+  </div>
+</script>
+
+</body>
+</html>

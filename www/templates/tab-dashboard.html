@@ -1,0 +1,91 @@
+<ion-view view-title="Items">
+    
+<!-- Header funktioniert nicht -->
+    <div ng-if="!vm.isCreating && !vm.isEditing">
+        <ion-nav-buttons side="primary">
+            <button class="button" ng-click="doSomething()">
+                New Button
+            </button>
+        </ion-nav-buttons>
+        <ion-content>
+                <ion-list>
+                    <ion-item class="item-remove-animate item-avatar item-icon-right" type="item-text-wrap" ng-repeat="object in vm.data">
+                        <h2>{{object.name}}</h2>
+                        <p>{{object.description}}</p>
+                        <i class="icon ion-chevron-right icon-accessory"></i>
+                        <ion-option-button class="button-positive" ng-click="vm.setEdited(object)">
+                            Edit
+                        </ion-option-button>
+                        <ion-option-button class="button-assertive" ng-click="vm.delete(object.id)">
+                            Delete
+                        </ion-option-button>
+                    </ion-item>
+                </ion-list>
+                <span><button class="button button-positive" ng-click="vm.signout()">log out</button></span>
+                <span ng-click="vm.isCreating = true"><i class='icon ion-plus-round new-item'> Add Item</i></span>
+        </ion-content>
+    </div>
+
+
+    <div ng-if="vm.isCreating">
+        <ion-content class="padding has-header">
+            <!-- CREATING -->
+            <div class="bar bar-header">
+                <h2 class="title">Create Item</h2>
+                <span ng-click="vm.cancelCreate()" class="cancel-create">Cancel</span>
+            </div>
+            <div class="bar bar-subheader">
+                <form class="create-form" role="form"
+                      ng-submit="vm.create(vm.newObject)" novalidate>
+                    <div class="list">
+                        <label class="item item-input item-stacked-label">
+                            <span class="input-label">Name</span>
+                            <input type="text" class="form-control"
+                                   ng-model="vm.newObject.name"
+                                   placeholder="Enter name">
+                        </label>
+                        <label class="item item-input item-stacked-label">
+                            <span class="input-label">Description</span>
+                        <textarea placeholder="Comments" class="form-control"
+                                  ng-model="vm.newObject.description"
+                                  placeholder="Enter description"></textarea>
+                        </label>
+                    </div>
+                    <button class="button button-block button-positive" type="submit">Create</button>
+                </form>
+            </div>
+        </ion-content>
+    </div>
+
+    <div ng-if="vm.isEditing && !vm.isCreating">
+        <ion-content class="padding has-header">
+            <!-- EDITING -->
+            <div class="bar bar-header bar-secondary">
+                <h1 class="title">Editing {{vm.edited.name}}</h1>
+                <span ng-click="vm.cancelEditing()" class="cancel-create">Cancel</span>
+            </div>
+            <div class="bar bar-subheader">
+                <form class="edit-form" role="form"
+                      ng-submit="vm.update(vm.edited)" novalidate>
+                    <div class="list">
+                        <label class="item item-input item-stacked-label">
+                            <span class="input-label">Name</span>
+                            <input type="text" class="form-control"
+                                   ng-model="vm.edited.name"
+                                   placeholder="Enter name">
+                        </label>
+                        <label class="item item-input item-stacked-label">
+                            <span class="input-label">Description</span>
+                    <textarea class="form-control"
+                              ng-model="vm.edited.description"
+                              placeholder="Enter description"></textarea>
+
+                        </label>
+                    </div>
+                    <button class="button button-block button-positive" type="submit">Save</button>
+                </form>
+            </div>
+        </ion-content>
+    </div>
+</ion-view>
+
